@@ -185,23 +185,15 @@ const Header = ({ token }: HeaderProps) => {
 
   return (
     <header
-      className="w-full z-[999] absolute top-0 transition-all"
-      data-aos="fade-down"
-      style={
-        scroll
-          ? {
-              transform: "translateY(0%)",
-            }
-          : {}
-      }
+      className="w-full bg-[#191919] z-[999] absolute top-0 transition-all"
     >
       {/* Tạo header tại đây */}
       <div className="mx-auto px-[10px] h-[54px] flex items-center justify-between max-w-[1200px] lg:h-[95px] relative ">
-        <div className=" lg:flex lg:items-center lg:flex-1" ref={menuRef}>
+        <div className="w-full flex items-center justify-between" ref={menuRef}>
           <h1 className="">
             <Link
               href="/"
-              className="block w-[140px] lg:w-[160px] absolute top-[-10px] left-[50%] ml-[-70px] lg:relative lg:top-0 lg:left-0 lg:ml-0 lg:mr-[40px]"
+              className="block w-[110px] lg:w-[220px]"
             >
               <Image
                 src={renderImage("assets/images/logo-vtc.png")}
@@ -220,7 +212,7 @@ const Header = ({ token }: HeaderProps) => {
             <span
               className={`block bg-contain bg-no-repeat w-[26px] h-[26px] cursor-pointer  ${
                 open
-                  ? "bg-icon-close-menu fixed left-[16px] z-[1000] top-[20px]"
+                  ? "bg-icon-close-menu fixed right-[16px] z-[1000] top-[20px]"
                   : "bg-icon-menu"
               }`}
             ></span>
@@ -237,26 +229,26 @@ const Header = ({ token }: HeaderProps) => {
                   href="#"
                   className="block text-[#fff] hover:text-[#00AEEF] text-left py-[10px] px-[16px] border-solid border-b-[1px] border-[#535456]  text-[18px] lg:text-[24px] lg:border-b-0 2xl:mx-[10px] lg:bg-none"
                 >
-                  Trang chủ
+                  Game online
                 </Link>
 
                 <Link
                   href="#"
                   className="block text-[#fff] hover:text-[#00AEEF] text-left py-[10px] px-[16px] border-solid border-b-[1px] border-[#535456]  text-[18px] lg:text-[24px] lg:border-b-0 2xl:mx-[10px] lg:bg-none"
                 >
-                  Nạp game
+                  Truyền hình & Truyền thông
                 </Link>
                 <Link
                   href="/danh-sach-game"
                   className="block text-[#fff] hover:text-[#00AEEF] text-left py-[10px] px-[16px] border-solid border-b-[1px] border-[#535456]  text-[18px] lg:text-[24px]  lg:border-b-0 2xl:mx-[10px] lg:bg-none"
                 >
-                  Danh sách game
+                  Viễn thông - CNTT - Chuyển đổi số
                 </Link>
                 <Link
                   href="/"
                   className="block text-[#fff] hover:text-[#00AEEF] text-left py-[10px] px-[16px] border-solid border-b-[1px] border-[#535456]  text-[18px] lg:text-[24px] lg:border-b-0 2xl:mx-[10px] lg:bg-none"
                 >
-                  Bạn cần trợ giúp?
+                  Giáo dục - Đào tạo
                 </Link>
               </div>
             </div>

@@ -1,18 +1,15 @@
 import Header from "@/components/header/page";
 import "./globals.scss";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import Footer from "@/components/footer/page";
 import { Providers } from "@/redux/provider";
 // import { requireAuth } from "@/services/server-side/authen";
 import { GoogleTagManager } from "@next/third-parties/google";
 import Script from "next/script";
-
-import localFont from "next/font/local";
-
-const fontUtmcaffeta = localFont({
-  src: "../components/fonts/utm-cafeta.ttf",
-  display: "swap",
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 export const metadata: Metadata = {
   title: "VTC ORG",
@@ -32,7 +29,7 @@ export default async function asyncRootLayout({
 
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${fontUtmcaffeta.className}`} id="body-tag">
+      <body className={`${roboto.className}`} id="body-tag">
         <Providers>
           <div className="w-full overflow-hidden">
             <Header token={token} />

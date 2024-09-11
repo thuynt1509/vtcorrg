@@ -16,14 +16,7 @@ import {
   YouTubeEmbed,
   GoogleMapsEmbed,
 } from "@next/third-parties/google";
-import Banner from "@/components/section/Banner";
 
-import AboutVTC from "@/components/section/AboutVTC";
-import ListGameMobile from "@/components/section/ListGameMobile";
-import ListGamePC from "@/components/section/ListGamePC";
-import Activate from "@/components/section/Activate";
-import Awards from "@/components/section/Awards";
-import Partner from "@/components/section/Partner";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Gallery from "@/components/section/Gallery";
