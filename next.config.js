@@ -2,6 +2,7 @@
 const nextConfig = {
   // output: "standalone",
   output: "export",
+  reactStrictMode: false,
   experimental:
     process.env.NEXT_PUBLIC_MODE == "web"
       ? {

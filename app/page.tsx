@@ -27,6 +27,7 @@ import Partner from "@/components/section/Partner";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Gallery from "@/components/section/Gallery";
+import Gallery2 from "@/components/section/Gallery2";
 export default function Home() {
   const modal = useAppSelector((state: RootState) => state.app.modal);
   const loading = useAppSelector((state: RootState) => state.app.loading);

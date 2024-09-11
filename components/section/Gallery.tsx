@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Gallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0); // Quản lý chỉ số ảnh hiện tại
-  const [allowScroll, setAllowScroll] = useState(false); // Cho phép cuộn xuống phần dưới khi hết ảnh
+  const [allowScroll, setAllowScroll] = useState(true); // Cho phép cuộn xuống phần dưới khi hết ảnh
   const [scrollDistance, setScrollDistance] = useState(0);
   const galleryRef = useRef<HTMLDivElement | null>(null);
   const arrImg = [
@@ -40,23 +40,39 @@ const Gallery = () => {
   //   },
   //   [currentIndex, allowScroll]
   // );
-  const handleScroll = useCallback((event: WheelEvent) => {
-    if (window.scrollY === 0) {
-      if (event.deltaY > 0) {
-        // Cuộn xuống
-        if (scrollDistance < maxIndex * 1000) {
-          setScrollDistance((prevDistance) => prevDistance + event.deltaY);
-          event.preventDefault();
-        }
-      } else if (event.deltaY < 0) {
-        // Cuộn lên
-        setScrollDistance((prevDistance) =>
-          prevDistance + event.deltaY > 0 ? prevDistance + event.deltaY : 0
-        );
+  const handleScroll = useCallback(
+    (event: WheelEvent) => {
+      if (scrollDistance < maxIndex * 1000) {
         event.preventDefault();
       }
-    }
-  }, []);
+      if (window.scrollY === 0 && allowScroll) {
+        if (event.deltaY > 0) {
+          // Cuộn xuống
+          if (scrollDistance < maxIndex * 1000) {
+            for (var i = 1; i <= 100; i++) {
+              setScrollDistance((prevDistance) => prevDistance + 2);
+            }
+            setAllowScroll(false);
+            setTimeout(() => {
+              setAllowScroll(true);
+            }, 100);
+            event.preventDefault();
+          }
+        } else if (event.deltaY < 0) {
+          // Cuộn lên
+          setScrollDistance((prevDistance) =>
+            prevDistance - 200 > 0 ? prevDistance - 200 : 0
+          );
+          setAllowScroll(false);
+          setTimeout(() => {
+            setAllowScroll(true);
+          }, 100);
+          event.preventDefault();
+        }
+      }
+    },
+    [scrollDistance, allowScroll]
+  );
   // Thêm sự kiện cuộn chuột
   useEffect(() => {
     window.addEventListener("wheel", handleScroll, { passive: false });
@@ -67,30 +83,101 @@ const Gallery = () => {
   console.log(scrollDistance);
   return (
     <div className="gallery" ref={galleryRef}>
-      <div className={`gallery-item blur-[3px] active`} data-speed="1">
-        <Image
-          width={1420}
-          height={820}
-          src={"/assets/images/img-banner.jpg"}
-          alt="Banner VTC"
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div
-        className={`gallery-item z-[1] active`}
-        data-speed="2"
+      {/* {scrollDistance % 1000 === 0 && (
+        <div
+          className={`gallery-item z-[2] active`}
+          data-speed="1"
+          style={{
+            filter: `blur(${Math.floor((scrollDistance % 1000) / 100)}px)`,
+            transform: `scale(${1 - (scrollDistance % 1000) / 1000 / 5})`,
+          }}
+        >
+          <Image
+            width={1420}
+            height={820}
+            src={arrImg[Math.floor((scrollDistance + 200) / 1000)]}
+            alt="Banner VTC"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )} */}
+      {arrImg.map((e, i) => {
+        if (i <= scrollDistance / 1000) {
+          return (
+            <div
+              className={`gallery-item z-[1] active`}
+              data-speed="1"
+              style={{
+                filter: `blur(${Math.floor((scrollDistance % 1000) / 100)}px)`,
+                transform: `scale(${1 - (scrollDistance % 1000) / 1000 / 5})`,
+              }}
+            >
+              <Image
+                width={1420}
+                height={820}
+                src={arrImg[Math.floor(scrollDistance / 1000)]}
+                alt="Banner VTC"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          );
+        }
+        if (i === Math.ceil(scrollDistance / 1000)) {
+          return (
+            <div
+              className={`gallery-item z-[3] active`}
+              data-speed="2"
+              style={{
+                top: `${(1000 - (scrollDistance % 1000)) / 10}%`,
+              }}
+            >
+              <Image
+                width={1420}
+                height={820}
+                src={arrImg[Math.ceil(scrollDistance / 1000)]}
+                alt="Banner VTC 2"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          );
+        }
+        return <></>;
+      })}
+      {/* <div
+        className={`gallery-item active`}
+        data-speed="1"
         style={{
-          top: "60%",
+          filter: `blur(${Math.floor((scrollDistance % 1000) / 100)}px)`,
+          transform: `scale(${1 - (scrollDistance % 1000) / 1000 / 5})`,
         }}
       >
         <Image
           width={1420}
           height={820}
-          src={"/assets/images/img-banner2.jpg"}
-          alt="Banner VTC 2"
+          src={arrImg[Math.floor(scrollDistance / 1000)]}
+          alt="Banner VTC"
           className="w-full h-full object-cover"
         />
       </div>
+      {disapear ? (
+        <></>
+      ) : (
+        <div
+          className={`gallery-item z-[1] active`}
+          data-speed="2"
+          style={{
+            top: `${(1000 - (scrollDistance % 1000)) / 10}%`,
+          }}
+        >
+          <Image
+            width={1420}
+            height={820}
+            src={arrImg[Math.ceil(scrollDistance / 1000)]}
+            alt="Banner VTC 2"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )} */}
       {/* <div
         className={`gallery-item ${currentIndex === 2 ? "active" : ""}`}
         data-speed="2"

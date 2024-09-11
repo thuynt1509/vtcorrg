@@ -29,7 +29,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "build/types/**/*.ts",
-    "components/Feature/FeaturePCDetailtsx"
+    "components/Feature/FeaturePCDetailtsx",
+    "components/section/Gallery2.tsx"
   ],
   "exclude": ["node_modules"]
 }

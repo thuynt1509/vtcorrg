@@ -19,3 +19,15 @@
 .gallery-item.active {
   top: 0;
 }
+
+.gallery-item1 {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-item1.active {
+  top: 0;
+}
