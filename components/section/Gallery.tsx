@@ -10,6 +10,8 @@ const Gallery = () => {
     "/assets/images/img-banner.jpg",
     "/assets/images/img-banner2.jpg",
     "/assets/images/img-banner3.jpg",
+    "/assets/images/img-banner4.jpg",
+    "/assets/images/img-banner5.jpg",
   ];
   const maxIndex = arrImg.length - 1;
   // Sử dụng useCallback để giữ tham chiếu hàm không đổi
@@ -42,7 +44,7 @@ const Gallery = () => {
   // );
   const handleScroll = useCallback(
     (event: WheelEvent) => {
-      if (scrollDistance < maxIndex * 1000) {
+      if (scrollDistance < maxIndex * 1000 && window.scrollY === 0) {
         event.preventDefault();
       }
       if (window.scrollY === 0 && allowScroll) {
@@ -82,7 +84,7 @@ const Gallery = () => {
   }, [handleScroll]);
   console.log(scrollDistance);
   return (
-    <div className="gallery" ref={galleryRef}>
+    <div className="gallery " ref={galleryRef}>
       {/* {scrollDistance % 1000 === 0 && (
         <div
           className={`gallery-item z-[2] active`}

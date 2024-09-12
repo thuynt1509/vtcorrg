@@ -3,7 +3,7 @@
 @tailwind utilities;
 .gallery {
   position: relative;
-  height: 850px;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -31,3 +31,4 @@
 .gallery-item1.active {
   top: 0;
 }
+//

@@ -35,16 +35,16 @@ export default function ScrollToTopButton() {
     <>
       {isVisible && (
         <button
-          className="scroll-to-top-button  fixed bg-[#00AEEF] w-[60px] h-[60px] flex items-center justify-center rounded-[40px] lg:w-[80px] lg:h-[80px] bottom-[90px] right-[20px] cursor-pointer z-50
+          className="scroll-to-top-button shadow-[0px_4px_16px_0px_#0000001A] fixed bg-[#D4EEFF] w-[60px] h-[60px] flex items-center justify-center rounded-[40px] lg:w-[80px] lg:h-[80px] bottom-[50px] right-[20px] cursor-pointer z-50
         "
           onClick={scrollToTop}
         >
           <Image
             src={renderImage("assets/images/buttonTop.png")}
-            width={23}
-            height={28}
-            alt="Audition - Button To Top"
-            className="w-[20px] lg:w-[23px]"
+            width={33}
+            height={31}
+            alt="VTC - Button To Top"
+            className="w-[20px] lg:w-[33px]"
           />
         </button>
       )}

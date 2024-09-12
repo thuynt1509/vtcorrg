@@ -1,15 +1,15 @@
-import Header from "@/components/header/page";
+import Header from "@/components/header/Header";
 import "./globals.scss";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import Footer from "@/components/footer/page";
+import Footer from "@/components/footer/Footer";
 import { Providers } from "@/redux/provider";
 // import { requireAuth } from "@/services/server-side/authen";
 import { GoogleTagManager } from "@next/third-parties/google";
 import Script from "next/script";
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "700"],
 });
 export const metadata: Metadata = {
   title: "VTC ORG",
@@ -31,7 +31,7 @@ export default async function asyncRootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${roboto.className}`} id="body-tag">
         <Providers>
-          <div className="w-full overflow-hidden">
+          <div className="w-full overflow-hidden  ">
             <Header token={token} />
             {children}
             <Footer />

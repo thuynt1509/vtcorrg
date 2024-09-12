@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: "standalone",
-  output: "export",
+  output: "standalone",
+  // output: "export",
   reactStrictMode: false,
   experimental:
     process.env.NEXT_PUBLIC_MODE == "web"

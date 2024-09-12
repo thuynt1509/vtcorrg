@@ -21,6 +21,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Gallery from "@/components/section/Gallery";
 import Gallery2 from "@/components/section/Gallery2";
+import ProductList from "@/components/section/ProductList";
 export default function Home() {
   const modal = useAppSelector((state: RootState) => state.app.modal);
   const loading = useAppSelector((state: RootState) => state.app.loading);
@@ -51,7 +52,7 @@ export default function Home() {
     });
   }, []);
   return (
-    <main className="text-black">
+    <main className="text-black lg:ml-[300px]">
       {modal ? modal : <></>}
       <LoadingBar
         color="#ff23f7"
@@ -60,6 +61,7 @@ export default function Home() {
         onLoaderFinished={() => finishLoad()}
       />
       <Gallery />
+      <ProductList />
     </main>
   );
 }
